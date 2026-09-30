@@ -1,13 +1,39 @@
 # Render Blueprint — https://render.com/docs/blueprint-spec
-# Fully prerendered static site: no rewrite rules needed. Every route has its
-# own index.html and scripts/postbuild.mjs emits a root 404.html, which Render
-# serves automatically for unknown paths.
+# Prerendered static site. Each route has its own prerendered index.html
+# (e.g. /decor/index.html). Render does NOT automatically serve those nested
+# files for clean URLs like "/decor" on direct load / refresh, so we add
+# explicit rewrites below. Real files (JS/CSS/images) are served directly;
+# rewrites only apply to paths with no matching file.
 services:
   - type: web
     name: srinivas-decor
     runtime: static
     buildCommand: npm ci && npm run build
     staticPublishPath: dist/decor-site/browser
+    routes:
+      # Serve each route's own prerendered HTML on direct load / refresh.
+      - type: rewrite
+        source: /about
+        destination: /about/index.html
+      - type: rewrite
+        source: /services
+        destination: /services/index.html
+      - type: rewrite
+        source: /decor
+        destination: /decor/index.html
+      - type: rewrite
+        source: /packages
+        destination: /packages/index.html
+      - type: rewrite
+        source: /gallery
+        destination: /gallery/index.html
+      - type: rewrite
+        source: /contact
+        destination: /contact/index.html
+      # Anything else → app shell; Angular's router renders the 404 page.
+      - type: rewrite
+        source: /*
+        destination: /index.html
     headers:
       - path: /*
         name: X-Frame-Options
