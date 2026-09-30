@@ -40,6 +40,37 @@
   </div>
 </section>
 
+<section class="section pillars" appReveal>
+  <div class="container">
+    <ul class="grid grid--3 pillars__grid" role="list">
+      <li>
+        <a class="pillar-card petal-card" routerLink="/decor">
+          <app-icon name="flower" size="2rem" />
+          <h2 class="pillar-card__title">Dileep Decors</h2>
+          <p class="pillar-card__text">Flower, stage, backdrop &amp; balloon decoration for every function.</p>
+          <span class="pillar-card__link">View décor →</span>
+        </a>
+      </li>
+      <li>
+        <a class="pillar-card petal-card" routerLink="/decor" [queryParams]="{ category: 'sound-av' }">
+          <app-icon name="truck" size="2rem" />
+          <h2 class="pillar-card__title">Suppliers</h2>
+          <p class="pillar-card__text">Lighting, DJ sound, LED, generators &amp; furniture on rent.</p>
+          <span class="pillar-card__link">What we supply →</span>
+        </a>
+      </li>
+      <li>
+        <a class="pillar-card petal-card" routerLink="/services">
+          <app-icon name="sparkler" size="2rem" />
+          <h2 class="pillar-card__title">All Events</h2>
+          <p class="pillar-card__text">Weddings, receptions, birthdays, corporate &amp; temple events.</p>
+          <span class="pillar-card__link">See events →</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
+
 <section class="section section--alt temple-arch" appReveal>
   <div class="container">
     <app-section-heading eyebrow="Why us" title="Why families love working with us" teluguTitle="మమ్మల్ని ఎందుకు ఎంచుకోవాలి" />

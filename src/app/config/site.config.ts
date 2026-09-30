@@ -99,7 +99,7 @@ export const siteConfig: SiteConfig = {
     'Vizianagaram',
   ],
   // TODO(client): production domain, no trailing slash
-  siteUrl: 'https://dileep-lighting-sounds.onrender.com',
+  siteUrl: 'https://dileep-decors-suppliers.onrender.com',
   defaultOgImage: 'images/og-default.jpg',
   // TODO(client): year the business started (omitted until confirmed)
 };

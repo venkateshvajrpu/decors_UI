@@ -202,6 +202,63 @@
   margin-block-start: var(--space-7);
 }
 
+/* Three main pillars: Decors · Suppliers · All Events */
+.pillars__grid {
+  gap: var(--space-4);
+}
+
+.pillar-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  height: 100%;
+  text-decoration: none;
+  transition: transform var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out);
+}
+
+.pillar-card app-icon {
+  color: var(--color-accent-light);
+}
+
+.pillar-card__title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  color: var(--color-white);
+}
+
+.pillar-card__text {
+  color: var(--color-accent-light);
+  font-size: var(--text-sm);
+}
+
+.pillar-card__link {
+  margin-block-start: auto;
+  padding-block-start: var(--space-2);
+  font-weight: var(--weight-semibold);
+  color: var(--color-white);
+}
+
+.pillar-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+.pillar-card:focus-visible {
+  outline-color: var(--color-accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pillar-card:hover {
+    transform: none;
+  }
+}
+
+@media (min-width: 48rem) {
+  .pillars__grid {
+    gap: var(--space-6);
+  }
+}
+
 @media (min-width: 48rem) {
   .hero__actions {
     width: auto;

@@ -6,7 +6,7 @@
 # rewrites only apply to paths with no matching file.
 services:
   - type: web
-    name: srinivas-decor
+    name: dileep-decors-suppliers
     runtime: static
     buildCommand: npm ci && npm run build
     staticPublishPath: dist/decor-site/browser

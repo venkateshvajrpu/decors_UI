@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 Disallow: /404
 
-Sitemap: https://dileep-lighting-sounds.onrender.com/sitemap.xml
+Sitemap: https://dileep-decors-suppliers.onrender.com/sitemap.xml
