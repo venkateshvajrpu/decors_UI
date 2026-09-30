@@ -1,0 +1,66 @@
+<section class="section page-head mandala-bg">
+  <div class="container">
+    <app-section-heading [level]="1" eyebrow="Contact" title="Let’s plan your event" teluguTitle="మమ్మల్ని సంప్రదించండి">
+      WhatsApp is fastest — send the date, venue and guest count and we’ll reply with a décor plan and quote.
+    </app-section-heading>
+  </div>
+</section>
+
+<section class="section channels" appReveal>
+  <div class="container grid grid--3">
+    <a class="channel channel--whatsapp" [href]="wa.general()" target="_blank" rel="noopener">
+      <span class="channel__icon"><app-icon name="whatsapp" size="1.75rem" /></span>
+      <span class="channel__label">WhatsApp</span>
+      <span class="channel__value">{{ wa.whatsappDisplay() }}</span>
+      <span class="channel__hint">Message us anytime</span>
+    </a>
+    <a class="channel" [href]="wa.telHref()">
+      <span class="channel__icon"><app-icon name="phone" size="1.75rem" /></span>
+      <span class="channel__label">Call</span>
+      <span class="channel__value">{{ config.phone }}</span>
+      <span class="channel__hint">During opening hours</span>
+    </a>
+    <a class="channel" [href]="wa.mailtoHref()">
+      <span class="channel__icon"><app-icon name="mail" size="1.75rem" /></span>
+      <span class="channel__label">Email</span>
+      <span class="channel__value">{{ config.email }}</span>
+      <span class="channel__hint">For detailed requirements</span>
+    </a>
+  </div>
+</section>
+
+<section class="section section--alt temple-arch" appReveal>
+  <div class="container details">
+    <div class="details__info stack">
+      <h2>Visit our studio</h2>
+      <address class="details__address">
+        <app-icon name="pin" size="1.25rem" />
+        <span>
+          {{ config.address.line1 }}@if (config.address.line2) {, {{ config.address.line2 }}}<br />
+          {{ config.address.city }}, {{ config.address.state }} {{ config.address.pincode }}
+        </span>
+      </address>
+      <h3>Opening hours</h3>
+      <ul class="details__hours" role="list">
+        @for (h of config.hours; track h.days) {
+          <li><app-icon name="clock" /> <span>{{ h.days }}</span> <span>{{ h.open }} – {{ h.close }}</span></li>
+        }
+      </ul>
+      <h3>Service areas</h3>
+      <p class="details__areas">{{ config.serviceAreas.join(' · ') }}</p>
+      <a class="btn btn--outline" [href]="config.mapLink" target="_blank" rel="noopener">
+        <app-icon name="pin" />
+        Get directions
+      </a>
+    </div>
+    <div class="details__map">
+      <iframe
+        [src]="mapUrl"
+        [title]="'Map showing the location of ' + config.name"
+        loading="lazy"
+        allowfullscreen
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
+  </div>
+</section>

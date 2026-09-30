@@ -1,0 +1,18 @@
+.page-head {
+  padding-block: var(--space-9) var(--space-4);
+}
+
+.packages {
+  padding-block-start: var(--space-4);
+}
+
+.packages__grid {
+  align-items: stretch;
+}
+
+.packages__note {
+  margin-block-start: var(--space-7);
+  max-width: 44rem;
+  color: var(--color-muted);
+  font-size: var(--text-sm);
+}

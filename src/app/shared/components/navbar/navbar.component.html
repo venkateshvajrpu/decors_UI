@@ -1,0 +1,59 @@
+<header class="nav">
+  <!-- Bar carries the blur; the fixed panel must not sit inside a backdrop-filter (it would become its containing block). -->
+  <div class="nav__bar">
+    <div class="container nav__inner">
+      <a class="nav__brand" routerLink="/" [attr.aria-label]="config.name + ' — home'">
+        <app-icon name="flower" class="nav__mark" aria-hidden="true" />
+        <span class="nav__name">{{ config.name }}</span>
+      </a>
+
+      <nav class="nav__desktop" aria-label="Primary">
+        <ul class="nav__list" role="list">
+          @for (link of links; track link.path) {
+            <li>
+              <a class="nav__link" [routerLink]="link.path" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: !!link.exact }" ariaCurrentWhenActive="page">{{ link.label }}</a>
+            </li>
+          }
+        </ul>
+      </nav>
+
+      <div class="nav__actions">
+        <a class="btn btn--primary btn--sm nav__cta" [href]="wa.general()" target="_blank" rel="noopener">
+          <app-icon name="whatsapp" />
+          Book now
+        </a>
+        <button
+          #toggleBtn
+          type="button"
+          class="nav__toggle"
+          [attr.aria-expanded]="isOpen()"
+          aria-controls="mobile-nav"
+          [attr.aria-label]="isOpen() ? 'Close menu' : 'Open menu'"
+          (click)="toggle()"
+        >
+          <app-icon [name]="isOpen() ? 'close' : 'menu'" size="1.5rem" />
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <nav #panel id="mobile-nav" class="nav__panel" [class.is-open]="isOpen()" aria-label="Primary (mobile)" [attr.aria-hidden]="!isOpen()" [attr.inert]="isOpen() ? null : ''">
+    <ul class="nav__panel-list" role="list">
+      @for (link of links; track link.path) {
+        <li>
+          <a class="nav__panel-link" [routerLink]="link.path" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: !!link.exact }" ariaCurrentWhenActive="page">{{ link.label }}</a>
+        </li>
+      }
+    </ul>
+    <div class="nav__panel-actions">
+      <a class="btn btn--whatsapp btn--block" [href]="wa.general()" target="_blank" rel="noopener">
+        <app-icon name="whatsapp" size="1.25em" />
+        WhatsApp us
+      </a>
+      <a class="btn btn--outline btn--block" [href]="wa.telHref()">
+        <app-icon name="phone" size="1.25em" />
+        {{ config.phone }}
+      </a>
+    </div>
+  </nav>
+</header>

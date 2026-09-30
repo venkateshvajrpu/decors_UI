@@ -1,0 +1,24 @@
+<dialog #dialog class="lightbox" aria-label="Image viewer" (close)="onDialogClose()">
+  @if (isOpen() && current(); as image) {
+    <div class="lightbox__frame">
+      <button type="button" class="lightbox__btn lightbox__close" (click)="close()" aria-label="Close image viewer">
+        <app-icon name="close" size="1.5rem" />
+      </button>
+      <figure class="lightbox__figure">
+        <img [ngSrc]="image.src" [width]="image.width" [height]="image.height" [alt]="image.alt" loading="eager" sizes="100vw" />
+        <figcaption class="lightbox__caption">
+          {{ image.alt }}
+          <span class="lightbox__counter">{{ index() + 1 }} / {{ count() }}</span>
+        </figcaption>
+      </figure>
+      @if (count() > 1) {
+        <button type="button" class="lightbox__btn lightbox__nav lightbox__nav--prev" (click)="prev()" aria-label="Previous image">
+          <app-icon name="chevron" size="1.5rem" />
+        </button>
+        <button type="button" class="lightbox__btn lightbox__nav lightbox__nav--next" (click)="next()" aria-label="Next image">
+          <app-icon name="chevron" size="1.5rem" />
+        </button>
+      }
+    </div>
+  }
+</dialog>

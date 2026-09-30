@@ -1,0 +1,18 @@
+<section class="cta section--primary temple-arch temple-arch--primary lights-bg">
+  <div class="container cta__inner">
+    <div class="cta__copy">
+      <h2 class="cta__title">{{ title() }}</h2>
+      <p class="cta__text">{{ text() }}</p>
+    </div>
+    <div class="cluster cta__actions">
+      <a class="btn btn--accent btn--lg" [href]="whatsappHref() || wa.general()" target="_blank" rel="noopener">
+        <app-icon name="whatsapp" size="1.25em" />
+        WhatsApp us
+      </a>
+      <a class="btn btn--on-dark btn--lg" [href]="wa.telHref()">
+        <app-icon name="phone" size="1.25em" />
+        {{ config.phone }}
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,63 @@
+<section class="section page-head mandala-bg">
+  <div class="container">
+    <app-section-heading [level]="1" eyebrow="What we do" title="Everything for your function" teluguTitle="మా అలంకరణ జాబితా">
+      {{ totalItems }} things we can set up for you — flowers, backdrops, lighting, sound, stage, furniture and more.
+      Pick what you like, or let us plan it all.
+    </app-section-heading>
+  </div>
+</section>
+
+<div class="filter" role="group" aria-label="Filter catalogue by category">
+  <div class="container filter__scroll">
+    <button type="button" class="filter__btn" [class.is-active]="active() === all" [attr.aria-pressed]="active() === all" (click)="select(all)">
+      All
+    </button>
+    @for (category of categories; track category.id) {
+      <button type="button" class="filter__btn" [class.is-active]="active() === category.id" [attr.aria-pressed]="active() === category.id" (click)="select(category.id)">
+        <app-icon [name]="category.icon" />
+        {{ category.title }}
+      </button>
+    }
+  </div>
+</div>
+
+@for (category of visible(); track category.id) {
+  <section class="section category" [id]="category.id" appReveal>
+    <div class="container">
+      <header class="category__head">
+        <span class="category__icon"><app-icon [name]="category.icon" size="1.75rem" /></span>
+        <div>
+          <h2 class="category__title">{{ category.title }}</h2>
+          @if (category.teluguTitle) {
+            <p class="category__telugu" lang="te">{{ category.teluguTitle }}</p>
+          }
+          <p class="category__desc">{{ category.description }}</p>
+        </div>
+        <a class="btn btn--whatsapp btn--sm category__cta" [href]="wa.forCatalogue(category)" target="_blank" rel="noopener">
+          <app-icon name="whatsapp" />
+          Ask about this
+        </a>
+      </header>
+      <div class="grid grid--3">
+        @for (item of category.items; track item.name) {
+          <app-catalogue-item-card [item]="item" />
+        }
+      </div>
+    </div>
+  </section>
+}
+
+<section class="section section--primary temple-arch temple-arch--primary lights-bg custom" appReveal>
+  <div class="container custom__inner">
+    <div>
+      <h2 class="custom__title">Have something else in mind?</h2>
+      <p class="custom__text">
+        Just tell us your idea, theme and budget — we’ll plan the whole thing for you, from flowers to lights.
+      </p>
+    </div>
+    <a class="btn btn--accent btn--lg" [href]="wa.customQuote()" target="_blank" rel="noopener">
+      <app-icon name="whatsapp" size="1.25em" />
+      Ask us
+    </a>
+  </div>
+</section>

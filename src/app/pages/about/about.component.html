@@ -1,0 +1,102 @@
+<section class="section page-head mandala-bg">
+  <div class="container">
+    <app-section-heading [level]="1" eyebrow="About us" title="Lighting, sound & decoration you can trust" teluguTitle="మా గురించి">
+      {{ config.name }}, run by R. Rajendra Rao, has been lighting up and decorating functions across
+      {{ config.address.city }} — from DJ parties and stage lighting to pandals, flowers and balloon décor.
+    </app-section-heading>
+  </div>
+</section>
+
+<section class="section story" appReveal>
+  <div class="container story__inner">
+    <div class="story__media">
+      <!-- TODO(client): replace with a real workshop / team photo -->
+      <img ngSrc="images/about/workshop.webp" width="1000" height="750" alt="Decorators preparing floral arrangements and backdrops in the workshop" sizes="(min-width: 64rem) 45vw, 100vw" />
+    </div>
+    <div class="story__copy stack">
+      <h2>Our story</h2>
+      <!-- TODO(client): replace with the real story -->
+      <p>
+        We started with lighting and sound for local functions in {{ config.address.city }}, and grew into a full
+        events team — DJ and fly sound, stage lighting, pandals, flower and balloon decoration, and generator backup.
+      </p>
+      <p>
+        @if (yearsServing) {
+          Over {{ yearsServing }} years later,
+        } @else {
+          Today,
+        }
+        we handle weddings, receptions, birthdays, temple functions and corporate events — set up to your theme, on time,
+        with our own equipment and one dependable team.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt temple-arch" appReveal>
+  <div class="container">
+    <app-section-heading eyebrow="Our philosophy" title="Your tradition, beautifully staged" teluguTitle="మా నమ్మకం">
+      A function is a memory in the making. We design the way we would for our own family — and handle every detail so
+      hosts can actually enjoy their own celebration.
+    </app-section-heading>
+    <div class="grid grid--3 pillars">
+      <div class="pillar">
+        <h3>Custom, never copy-paste</h3>
+        <p>Every setup is designed around your theme, colours, venue and budget — with a mockup before you confirm.</p>
+      </div>
+      <div class="pillar">
+        <h3>Rooted in Andhra tradition</h3>
+        <p>Kalasham, thoranam, muggu and nadaswaram — the rituals and motifs that make a Telugu function feel complete.</p>
+      </div>
+      <div class="pillar">
+        <h3>Setup you don’t have to manage</h3>
+        <p>Our team handles supply, setup and teardown so you can focus on the celebration, not the logistics.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" appReveal>
+  <div class="container">
+    <app-section-heading eyebrow="Why us" title="What sets us apart" teluguTitle="మా ప్రత్యేకత" />
+    <ul class="grid grid--4 standards" role="list">
+      @for (item of standards; track item.title) {
+        <li class="standard">
+          <span class="standard__icon"><app-icon [name]="item.icon" size="1.5rem" /></span>
+          <h3 class="standard__title">{{ item.title }}</h3>
+          <p class="standard__text">{{ item.text }}</p>
+        </li>
+      }
+    </ul>
+  </div>
+</section>
+
+<section class="section section--warm temple-arch temple-arch--warm" appReveal>
+  <div class="container">
+    <app-section-heading eyebrow="The team" title="People behind the décor" teluguTitle="మా బృందం" />
+    <ul class="grid grid--3" role="list">
+      @for (member of team; track member.title) {
+        <li class="member">
+          <span class="member__icon"><app-icon [name]="member.icon" size="1.75rem" /></span>
+          <h3 class="member__title">{{ member.title }}</h3>
+          <p class="member__text">{{ member.text }}</p>
+        </li>
+      }
+    </ul>
+  </div>
+</section>
+
+<section class="section" appReveal>
+  <div class="container">
+    <app-section-heading eyebrow="Where we serve" title="Across Visakhapatnam and beyond" teluguTitle="మేము సేవలందించే ప్రాంతాలు">
+      Based in {{ config.address.city }}. Destination functions further into Andhra are welcome — ask us about travel.
+    </app-section-heading>
+    <ul class="cluster cluster--center areas" role="list">
+      @for (area of config.serviceAreas; track area) {
+        <li class="area"><app-icon name="pin" /> {{ area }}</li>
+      }
+    </ul>
+  </div>
+</section>
+
+<app-cta-banner title="Let’s design your event" />

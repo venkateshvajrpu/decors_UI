@@ -1,0 +1,114 @@
+/* ==========================================================================
+   Design tokens — the ONLY file that may contain raw colour / size values.
+   Rebranding a client = edit this file (+ site.config.ts + public/images).
+   Breakpoints (use literally in @media; custom properties don't work there):
+     48rem = 768px   64rem = 1024px   80rem = 1280px
+   ========================================================================== */
+
+:root {
+  /* ---- Colour: Andhra wedding / decor festive palette ------------------
+     Maroon (kumkum) + marigold gold are Telugu wedding motifs and stay.
+     Banana-leaf green is dropped (reads as food) for peacock teal — a cool
+     jewel tone that photographs cleanly behind floral & lit decor. Ground
+     is deepened from bright ivory so decor photography pops on white cards. */
+  --color-primary: #8b1a1a;        /* deep maroon (kumkum)                  */
+  --color-primary-dark: #651111;
+  --color-primary-soft: #f6e4e4;   /* tint for backgrounds / hover          */
+
+  --color-accent: #e9a825;         /* marigold / turmeric gold — decorative */
+  --color-accent-light: #fbe7b2;
+  --color-accent-deep: #8a5e08;    /* gold for TEXT — 5:1+ on warm ground   */
+
+  --color-secondary: #106b6b;      /* peacock teal — jewel tone             */
+  --color-secondary-dark: #0b4d4d;
+  --color-secondary-light: #2f9494;
+  --color-secondary-soft: #dcefef;
+
+  --color-bg: #f4e7d2;             /* deep warm champagne — richer ground   */
+  --color-surface: #ffffff;        /* crisp white cards make photos pop      */
+  --color-surface-2: #f7e3bf;      /* warm card tint                         */
+  --color-ink: #2b1d14;            /* dark brown text — 13:1+ on ground      */
+  --color-muted: #5c4a3d;          /* secondary text — 6.8:1 on ground       */
+  --color-border: #e3cfa6;
+  --color-white: #ffffff;
+
+  --color-whatsapp: #25d366;       /* brand green — decorative only          */
+  --color-whatsapp-deep: #0b7a5b;  /* WhatsApp buttons — 5.3:1 with white    */
+  --color-focus: var(--color-secondary);
+
+  /* ---- Typography -------------------------------------------------------- */
+  --font-display: 'Yatra One', 'Yatra One Fallback', 'Playfair Display', Georgia, serif;
+  --font-telugu: 'Tiro Telugu', 'Noto Sans Telugu', 'Kohinoor Telugu', 'Gautami', serif;
+  --font-body: 'Poppins', 'Poppins Fallback', 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  --text-2xl: clamp(1.5rem, 1.25rem + 1vw, 2rem);
+  --text-3xl: clamp(1.875rem, 1.4rem + 1.8vw, 2.75rem);
+  --text-4xl: clamp(2.25rem, 1.6rem + 2.8vw, 3.5rem);
+  --text-5xl: clamp(2.75rem, 1.8rem + 4vw, 4.5rem);
+
+  --leading-tight: 1.15;
+  --leading-snug: 1.35;
+  --leading-normal: 1.6;
+  --leading-relaxed: 1.75;
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  --tracking-wide: 0.08em;
+  --tracking-wider: 0.14em;
+
+  /* ---- Spacing (0.25rem base) ------------------------------------------- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-7: 2rem;
+  --space-8: 2.5rem;
+  --space-9: 3rem;
+  --space-10: 4rem;
+  --space-11: 5rem;
+  --space-12: 6rem;
+
+  /* ---- Radii ------------------------------------------------------------ */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1.25rem;
+  --radius-full: 999rem;
+
+  /* ---- Shadows (warm-tinted) -------------------------------------------- */
+  --shadow-sm: 0 1px 2px rgb(43 29 20 / 0.08), 0 1px 3px rgb(43 29 20 / 0.06);
+  --shadow-md: 0 4px 12px rgb(43 29 20 / 0.1), 0 2px 4px rgb(43 29 20 / 0.06);
+  --shadow-lg: 0 16px 40px rgb(43 29 20 / 0.16), 0 4px 10px rgb(43 29 20 / 0.08);
+
+  /* ---- Motion ----------------------------------------------------------- */
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+  --duration-slow: 600ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* ---- Layout ----------------------------------------------------------- */
+  --container-max: 80rem;
+  --container-narrow: 48rem;
+  --gutter: var(--space-5);
+  --nav-height: 4.5rem;
+  --tap-target: 2.75rem; /* 44px minimum */
+
+  /* ---- Z-index scale ---------------------------------------------------- */
+  --z-below: -1;
+  --z-base: 0;
+  --z-raised: 10;
+  --z-nav: 100;
+  --z-fab: 200;
+  --z-modal: 300;
+  --z-skip-link: 400;
+}

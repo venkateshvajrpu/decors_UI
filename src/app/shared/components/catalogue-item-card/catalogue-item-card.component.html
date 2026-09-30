@@ -1,0 +1,21 @@
+<article class="card" [class.card--signature]="item().tags?.includes('signature')">
+  <header class="card__head">
+    <h3 class="card__title">{{ item().name }}</h3>
+    @if (item().teluguName) {
+      <p class="card__telugu" lang="te">{{ item().teluguName }}</p>
+    }
+  </header>
+  <p class="card__desc">{{ item().description }}</p>
+  @if (tags().length) {
+    <ul class="card__tags" role="list">
+      @for (t of tags(); track t.tag) {
+        <li class="tag" [class]="'tag tag--' + t.tag">{{ t.label }}</li>
+      }
+    </ul>
+  }
+  @if (item().unit) {
+    <footer class="card__foot">
+      <span class="card__unit">{{ item().unit }}</span>
+    </footer>
+  }
+</article>

@@ -1,0 +1,41 @@
+<section class="section page-head mandala-bg">
+  <div class="container">
+    <app-section-heading [level]="1" eyebrow="Services" title="Décor for every occasion" teluguTitle="ప్రతి వేడుకకు మా సేవలు">
+      From an intimate seemantham at home to a grand muhurtham — flowers, stage, lighting and everything set up by one
+      dedicated team.
+    </app-section-heading>
+  </div>
+</section>
+
+<section class="section services" appReveal>
+  <div class="container grid grid--3">
+    @for (service of services; track service.id) {
+      <app-service-card [service]="service" [headingLevel]="2" />
+    }
+  </div>
+</section>
+
+<section class="section section--alt temple-arch" appReveal>
+  <div class="container">
+    <app-section-heading eyebrow="How it works" title="From enquiry to teardown" teluguTitle="మా పని విధానం" />
+    <ol class="steps" role="list">
+      @for (step of steps; track step.title; let i = $index) {
+        <li class="step">
+          <span class="step__number" aria-hidden="true">{{ i + 1 }}</span>
+          <span class="step__icon"><app-icon [name]="step.icon" size="1.5rem" /></span>
+          <h3 class="step__title">{{ step.title }}</h3>
+          <p class="step__text">{{ step.text }}</p>
+        </li>
+      }
+    </ol>
+  </div>
+</section>
+
+<section class="section" appReveal>
+  <div class="container container--narrow">
+    <app-section-heading eyebrow="FAQs" title="Questions clients ask us" teluguTitle="తరచుగా అడిగే ప్రశ్నలు" />
+    <app-faq-accordion [faqs]="faqs" />
+  </div>
+</section>
+
+<app-cta-banner title="Ready to plan your event?" />

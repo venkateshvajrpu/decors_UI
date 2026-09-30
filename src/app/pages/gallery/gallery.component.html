@@ -1,0 +1,20 @@
+<section class="section page-head mandala-bg">
+  <div class="container">
+    <app-section-heading [level]="1" eyebrow="Gallery" title="Our work, event by event" teluguTitle="మా వేడుకల చిత్రాలు">
+      Real weddings, receptions and functions we’ve decorated around {{ config.address.city }}. Tap an album to view the
+      photos.
+    </app-section-heading>
+  </div>
+</section>
+
+<section class="section gallery" appReveal>
+  <div class="container grid grid--3">
+    @for (album of albums; track album.id) {
+      <app-album-card [cover]="album.cover" [count]="album.images.length" [headingLevel]="2" (opened)="openAlbum(album)" />
+    }
+  </div>
+</section>
+
+<app-image-lightbox [images]="lightboxImages()" />
+
+<app-cta-banner title="Want your event to look like this?" />

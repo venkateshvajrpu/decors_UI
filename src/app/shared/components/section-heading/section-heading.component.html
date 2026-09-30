@@ -1,0 +1,17 @@
+<div class="heading">
+  @if (eyebrow()) {
+    <span class="eyebrow">{{ eyebrow() }}</span>
+  }
+  @switch (level()) {
+    @case (1) { <h1 class="heading__title">{{ title() }}</h1> }
+    @case (3) { <h3 class="heading__title">{{ title() }}</h3> }
+    @default { <h2 class="heading__title">{{ title() }}</h2> }
+  }
+  @if (teluguTitle()) {
+    <p class="heading__telugu" lang="te">{{ teluguTitle() }}</p>
+  }
+  <div class="kolam-divider heading__divider" aria-hidden="true"></div>
+  <div class="heading__lead">
+    <ng-content />
+  </div>
+</div>

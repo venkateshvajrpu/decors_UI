@@ -1,0 +1,31 @@
+<article class="card" [class.card--compact]="compact()" [id]="service().id">
+  <div class="card__media">
+    <img [ngSrc]="service().image" width="800" height="600" [alt]="service().title + ' — event decoration'" sizes="(min-width: 64rem) 33vw, (min-width: 48rem) 50vw, 100vw" />
+    <span class="card__icon"><app-icon [name]="service().icon" size="1.5rem" /></span>
+  </div>
+  <div class="card__body">
+    @if (headingLevel() === 2) {
+      <h2 class="card__title">{{ service().title }}</h2>
+    } @else {
+      <h3 class="card__title">{{ service().title }}</h3>
+    }
+    @if (service().teluguTitle) {
+      <p class="card__telugu" lang="te">{{ service().teluguTitle }}</p>
+    }
+    <p class="card__desc">{{ service().description }}</p>
+    <ul class="card__features" role="list">
+      @for (feature of features(); track feature) {
+        <li>{{ feature }}</li>
+      }
+    </ul>
+    <footer class="card__foot">
+      @if (service().priceFrom) {
+        <span class="card__meta">From ₹{{ service().priceFrom }}</span>
+      }
+      <a class="btn btn--whatsapp btn--sm" [href]="whatsappHref()" target="_blank" rel="noopener">
+        <app-icon name="whatsapp" />
+        Enquire
+      </a>
+    </footer>
+  </div>
+</article>

@@ -1,0 +1,7 @@
+.page-head {
+  padding-block: var(--space-9) var(--space-4);
+}
+
+.gallery {
+  padding-block-start: var(--space-4);
+}

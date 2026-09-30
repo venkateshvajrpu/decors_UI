@@ -1,0 +1,51 @@
+<article class="pkg" [class.pkg--popular]="package().popular" [id]="package().id">
+  @if (package().popular) {
+    <p class="pkg__badge">Most popular</p>
+  }
+  <header class="pkg__head">
+    @if (headingLevel() === 2) {
+      <h2 class="pkg__name">{{ package().name }}</h2>
+    } @else {
+      <h3 class="pkg__name">{{ package().name }}</h3>
+    }
+    @if (package().teluguName) {
+      <p class="pkg__telugu" lang="te">{{ package().teluguName }}</p>
+    }
+    <p class="pkg__tagline">{{ package().tagline }}</p>
+  </header>
+
+  <p class="pkg__price">
+    @if (package().priceFrom) {
+      <span class="pkg__from">from</span> ₹{{ package().priceFrom }}
+    } @else {
+      <span class="pkg__from">on request</span>
+    }
+  </p>
+
+  @if (package().suitedFor.length) {
+    <ul class="pkg__suited" role="list">
+      @for (event of package().suitedFor; track event) {
+        <li>{{ event }}</li>
+      }
+    </ul>
+  }
+
+  <ul class="pkg__inclusions" role="list">
+    @for (item of package().inclusions; track item) {
+      <li><app-icon name="star" size="1rem" /> {{ item }}</li>
+    }
+  </ul>
+
+  @if (package().exclusions?.length) {
+    <ul class="pkg__exclusions" role="list">
+      @for (item of package().exclusions; track item) {
+        <li><app-icon name="close" size="1rem" /> {{ item }}</li>
+      }
+    </ul>
+  }
+
+  <a class="btn btn--whatsapp btn--block" [href]="whatsappHref()" target="_blank" rel="noopener">
+    <app-icon name="whatsapp" />
+    Enquire about {{ package().name }}
+  </a>
+</article>

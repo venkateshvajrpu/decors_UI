@@ -1,0 +1,25 @@
+<section class="section page-head mandala-bg">
+  <div class="container">
+    <app-section-heading [level]="1" eyebrow="Packages" title="Décor packages & tiers" teluguTitle="మా ప్యాకేజీలు">
+      Ready-made tiers to make planning easy — each can be customised to your theme, venue and budget. Prices are a
+      starting point; ask us for a quote for your exact function.
+    </app-section-heading>
+  </div>
+</section>
+
+<section class="section packages" appReveal>
+  <div class="container grid grid--4 packages__grid">
+    @for (pkg of packages; track pkg.id) {
+      <app-package-card [package]="pkg" [headingLevel]="2" />
+    }
+  </div>
+  <p class="container packages__note">
+    All packages are indicative. Final pricing depends on guest count, venue, flowers in season and any custom
+    requirements.
+  </p>
+</section>
+
+<app-cta-banner
+  title="Not sure which tier fits?"
+  text="Tell us your event and budget on WhatsApp — we’ll recommend the right package and share a mockup."
+/>

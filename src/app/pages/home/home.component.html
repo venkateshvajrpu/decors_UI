@@ -1,0 +1,109 @@
+<section class="hero lights-bg">
+  <div class="container hero__inner">
+    <div class="hero__copy">
+      <p class="hero__greeting" lang="te">స్వాగతం</p>
+      <h1 class="hero__title">{{ config.name }}</h1>
+      <p class="hero__tagline">{{ config.tagline }}</p>
+      <p class="hero__text">
+        We turn your big day into something beautiful — flowers, lights, stage and sound, all set up for you. Just tell
+        us the date, and enjoy your celebration in {{ config.address.city }} and nearby towns.
+      </p>
+      <div class="cluster hero__actions">
+        <a class="btn btn--whatsapp btn--lg" [href]="wa.general()" target="_blank" rel="noopener">
+          <app-icon name="whatsapp" size="1.25em" />
+          Message us
+        </a>
+        <a class="btn btn--on-dark btn--lg hero__secondary" [href]="wa.telHref()">
+          <app-icon name="phone" size="1.25em" />
+          Call us
+        </a>
+        <a class="btn btn--accent btn--lg hero__secondary" routerLink="/decor">See our work</a>
+      </div>
+      <ul class="hero__proof" role="list">
+        <li><app-icon name="truck" /> Supply &amp; setup</li>
+        <li><app-icon name="pin" /> {{ config.serviceAreas.length }}+ areas served</li>
+        @if (config.establishedYear) {
+          <li><app-icon name="star" /> Since {{ config.establishedYear }}</li>
+        }
+      </ul>
+    </div>
+    <div class="hero__media">
+      <img
+        ngSrc="images/hero/hero-decor.webp"
+        width="1200"
+        height="900"
+        priority
+        alt="Wedding mandap decorated with fresh flowers, drapes and warm lighting"
+        sizes="(min-width: 64rem) 50vw, 100vw"
+      />
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt temple-arch" appReveal>
+  <div class="container">
+    <app-section-heading eyebrow="Why us" title="Why families love working with us" teluguTitle="మమ్మల్ని ఎందుకు ఎంచుకోవాలి" />
+    <ul class="grid grid--3 why" role="list">
+      @for (point of whyUs; track point.title) {
+        <li class="why__item">
+          <span class="why__icon"><app-icon [name]="point.icon" size="1.5rem" /></span>
+          <h3 class="why__title">{{ point.title }}</h3>
+          @if (point.teluguTitle) {
+            <p class="why__telugu" lang="te">{{ point.teluguTitle }}</p>
+          }
+          <p class="why__text">{{ point.text }}</p>
+        </li>
+      }
+    </ul>
+  </div>
+</section>
+
+<section class="section" appReveal>
+  <div class="container">
+    <app-section-heading eyebrow="What we do" title="Everything you need in one place" teluguTitle="అన్నీ ఒకే చోట">
+      Have a look at what we offer, or just tell us your idea — we’ll take care of the rest.
+    </app-section-heading>
+    <div class="grid grid--4 categories">
+      @for (category of featuredCategories; track category.id) {
+        <a class="petal-card category" routerLink="/decor" [queryParams]="{ category: category.id }">
+          <app-icon [name]="category.icon" size="2rem" />
+          <h3 class="category__title">{{ category.title }}</h3>
+          @if (category.teluguTitle) {
+            <p class="category__telugu" lang="te">{{ category.teluguTitle }}</p>
+          }
+          <p class="category__count">{{ category.items.length }} items</p>
+        </a>
+      }
+    </div>
+    <p class="text-center section__more">
+      <a class="btn btn--primary" routerLink="/decor">See the full catalogue</a>
+    </p>
+  </div>
+</section>
+
+<section class="section section--warm temple-arch temple-arch--warm" appReveal>
+  <div class="container">
+    <app-section-heading eyebrow="Occasions" title="We decorate every kind of function" teluguTitle="ప్రతి వేడుకకు" />
+    <div class="grid grid--4">
+      @for (service of services; track service.id) {
+        <app-service-card [service]="service" [compact]="true" />
+      }
+    </div>
+    <p class="text-center section__more">
+      <a class="btn btn--outline" routerLink="/services">All services</a>
+    </p>
+  </div>
+</section>
+
+<section class="section" appReveal>
+  <div class="container">
+    <app-section-heading eyebrow="Reviews" title="Loved by families across Vizag" teluguTitle="మా అతిథుల మాటలు" />
+    <div class="grid grid--3 testimonials">
+      @for (t of testimonials; track t.name) {
+        <app-testimonial-card [testimonial]="t" />
+      }
+    </div>
+  </div>
+</section>
+
+<app-cta-banner />

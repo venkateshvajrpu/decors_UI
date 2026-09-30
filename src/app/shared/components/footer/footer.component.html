@@ -1,0 +1,56 @@
+<footer class="footer temple-arch temple-arch--primary">
+  <div class="container footer__grid">
+    <div class="footer__col footer__brand">
+      <p class="footer__name">{{ config.name }}</p>
+      <p class="footer__tagline">{{ config.tagline }}</p>
+      @if (config.socials.length) {
+        <ul class="footer__socials" role="list">
+          @for (social of config.socials; track social.platform) {
+            <li>
+              <a class="footer__social" [href]="social.url" target="_blank" rel="noopener" [attr.aria-label]="config.name + ' on ' + social.platform">
+                <app-icon [name]="social.platform" size="1.25rem" />
+              </a>
+            </li>
+          }
+        </ul>
+      }
+    </div>
+
+    <nav class="footer__col footer__col--links" aria-label="Footer">
+      <h2 class="footer__heading">Quick links</h2>
+      <ul class="footer__list" role="list">
+        @for (link of links; track link.path) {
+          <li><a class="footer__link" [routerLink]="link.path">{{ link.label }}</a></li>
+        }
+      </ul>
+    </nav>
+
+    <div class="footer__col">
+      <h2 class="footer__heading">Contact</h2>
+      <address class="footer__address">
+        <p>
+          <app-icon name="pin" />
+          <span>{{ config.address.line1 }}@if (config.address.line2) {, {{ config.address.line2 }}}<br />{{ config.address.city }}, {{ config.address.state }} {{ config.address.pincode }}</span>
+        </p>
+        <p><app-icon name="phone" /><a class="footer__link" [href]="wa.telHref()">{{ config.phone }}</a></p>
+        <p><app-icon name="whatsapp" /><a class="footer__link" [href]="wa.general()" target="_blank" rel="noopener">WhatsApp us</a></p>
+        <p><app-icon name="mail" /><a class="footer__link" [href]="wa.mailtoHref()">{{ config.email }}</a></p>
+      </address>
+    </div>
+
+    <div class="footer__col">
+      <h2 class="footer__heading">Hours &amp; areas</h2>
+      <ul class="footer__list" role="list">
+        @for (h of config.hours; track h.days) {
+          <li><app-icon name="clock" /> {{ h.days }}: {{ h.open }} – {{ h.close }}</li>
+        }
+      </ul>
+      <p class="footer__areas">Serving {{ config.serviceAreas.join(', ') }}.</p>
+    </div>
+  </div>
+
+  <div class="container footer__bottom">
+    <div class="kolam-divider kolam-divider--light" aria-hidden="true"></div>
+    <p>© {{ year }} {{ config.legalName || config.name }}. Wedding &amp; event decoration, {{ config.address.city }}.</p>
+  </div>
+</footer>

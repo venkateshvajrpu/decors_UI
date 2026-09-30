@@ -1,0 +1,92 @@
+/* ==========================================================================
+   Layout primitives — container, sections, grids, stacks, clusters.
+   Mobile-first; breakpoints 48rem / 64rem / 80rem.
+   ========================================================================== */
+
+.container {
+  width: min(100% - (2 * var(--gutter)), var(--container-max));
+  margin-inline: auto;
+}
+
+.container--narrow {
+  max-width: var(--container-narrow);
+}
+
+.section {
+  padding-block: var(--space-9);
+}
+
+.section--alt {
+  background: var(--color-surface);
+}
+
+.section--warm {
+  background: var(--color-surface-2);
+}
+
+.section--primary {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.section--primary :is(h1, h2, h3, h4) {
+  color: var(--color-white);
+}
+
+.section--primary a:not(.btn) {
+  color: var(--color-accent-light);
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.stack > * + * {
+  margin-block-start: var(--stack-gap, var(--space-4));
+}
+
+.stack--lg {
+  --stack-gap: var(--space-7);
+}
+
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--cluster-gap, var(--space-3));
+  align-items: center;
+}
+
+.cluster--center {
+  justify-content: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+@media (min-width: 48rem) {
+  .section {
+    padding-block: var(--space-10);
+  }
+
+  .grid--2,
+  .grid--3,
+  .grid--4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 64rem) {
+  .section {
+    padding-block: var(--space-12);
+  }
+
+  .grid--3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .grid--4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}

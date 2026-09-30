@@ -1,0 +1,22 @@
+<button type="button" class="album" (click)="opened.emit()">
+  <span class="album__media">
+    <img
+      [ngSrc]="cover().src"
+      [width]="cover().width"
+      [height]="cover().height"
+      [alt]="cover().eventType + ' décor album cover'"
+      sizes="(min-width: 64rem) 33vw, (min-width: 48rem) 50vw, 100vw"
+    />
+    <span class="album__count"><app-icon name="camera" size="1rem" /> {{ count() }}</span>
+  </span>
+  <span class="album__body">
+    @if (headingLevel() === 2) {
+      <h2 class="album__title">{{ cover().eventType }}</h2>
+    } @else {
+      <h3 class="album__title">{{ cover().eventType }}</h3>
+    }
+    @if (cover().venue) {
+      <span class="album__venue"><app-icon name="pin" size="1rem" /> {{ cover().venue }}</span>
+    }
+  </span>
+</button>

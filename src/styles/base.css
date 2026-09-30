@@ -1,0 +1,343 @@
+/* ==========================================================================
+   Base — reset, document defaults, typography, focus, button primitives,
+   reduced-motion. Values come from tokens.css only.
+   ========================================================================== */
+
+/* ---- Font fallbacks with matched metrics (no layout shift on swap) -------
+   Values measured in Chrome against the real web fonts; re-measure if fonts change. */
+@font-face {
+  font-family: 'Poppins Fallback';
+  font-weight: 400;
+  src: local('Arial');
+  size-adjust: 111.98%;
+  ascent-override: 93.77%;
+  descent-override: 31.26%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'Poppins Fallback';
+  font-weight: 500;
+  src: local('Arial');
+  size-adjust: 113.26%;
+  ascent-override: 92.71%;
+  descent-override: 30.9%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'Poppins Fallback';
+  font-weight: 600;
+  src: local('Arial Bold'), local('Arial');
+  size-adjust: 106.7%;
+  ascent-override: 98.4%;
+  descent-override: 32.8%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'Yatra One Fallback';
+  src: local('Georgia');
+  size-adjust: 110.67%;
+  ascent-override: 89.45%;
+  descent-override: 44.28%;
+  line-gap-override: 0%;
+}
+
+/* ---- Reset ---------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  /* clip (not hidden) so off-canvas elements never add sideways scroll, without breaking position: sticky */
+  overflow-x: clip;
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-height) + var(--space-4));
+}
+
+body {
+  min-height: 100dvh;
+  overflow-x: clip;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--color-ink);
+  background-color: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img,
+picture,
+video,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: 0;
+  padding: 0;
+}
+
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+  padding: 0;
+}
+
+/* ---- Typography ----------------------------------------------------------- */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-tight);
+  color: var(--color-primary);
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: var(--text-4xl);
+}
+
+h2 {
+  font-size: var(--text-3xl);
+}
+
+h3 {
+  font-size: var(--text-2xl);
+}
+
+h4 {
+  font-size: var(--text-xl);
+}
+
+p {
+  text-wrap: pretty;
+}
+
+small {
+  font-size: var(--text-sm);
+}
+
+:lang(te),
+.telugu {
+  font-family: var(--font-telugu);
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+a:hover {
+  color: var(--color-primary-dark);
+}
+
+.lead {
+  font-size: var(--text-lg);
+  color: var(--color-muted);
+  line-height: var(--leading-relaxed);
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-accent-deep);
+}
+
+/* ---- Focus ---------------------------------------------------------------- */
+:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* ---- Accessibility helpers ------------------------------------------------ */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: fixed;
+  top: var(--space-3);
+  left: var(--space-3);
+  z-index: var(--z-skip-link);
+  padding: var(--space-3) var(--space-5);
+  background: var(--color-primary);
+  color: var(--color-white);
+  border-radius: var(--radius-md);
+  font-weight: var(--weight-medium);
+  text-decoration: none;
+  transform: translateY(-200%);
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+  outline-color: var(--color-accent);
+}
+
+/* ---- Button primitives ---------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: var(--tap-target);
+  padding: var(--space-3) var(--space-6);
+  border: 2px solid transparent;
+  border-radius: var(--radius-full);
+  font-weight: var(--weight-medium);
+  font-size: var(--text-base);
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out);
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn--primary {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.btn--primary:hover {
+  background: var(--color-primary-dark);
+  color: var(--color-white);
+}
+
+.btn--accent {
+  background: var(--color-accent);
+  color: var(--color-ink);
+}
+
+.btn--accent:hover {
+  background: var(--color-accent-light);
+  color: var(--color-ink);
+}
+
+.btn--outline {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: transparent;
+}
+
+.btn--outline:hover {
+  background: var(--color-primary-soft);
+  color: var(--color-primary-dark);
+}
+
+.btn--on-dark {
+  border-color: var(--color-white);
+  color: var(--color-white);
+  background: transparent;
+}
+
+.btn--on-dark:hover {
+  background: var(--color-white);
+  color: var(--color-primary);
+}
+
+.btn--whatsapp {
+  background: var(--color-whatsapp-deep);
+  color: var(--color-white);
+}
+
+.btn--whatsapp:hover {
+  background: var(--color-secondary-dark);
+  color: var(--color-white);
+}
+
+.btn--lg {
+  padding: var(--space-4) var(--space-8);
+  font-size: var(--text-lg);
+}
+
+.btn--sm {
+  min-height: 2.25rem;
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-sm);
+}
+
+.btn--block {
+  width: 100%;
+}
+
+/* Touch devices and phones: small buttons still get a full 44px hit area. */
+@media (pointer: coarse), (max-width: 47.99rem) {
+  .btn--sm {
+    min-height: var(--tap-target);
+  }
+}
+
+/* ---- Reduced motion ------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-base: 0ms;
+    --duration-slow: 0ms;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  .btn:hover,
+  .btn:active {
+    transform: none;
+  }
+}
+
+/* ---- Mobile nav open: lock page scroll (class toggled by NavbarComponent) --- */
+body.nav-open {
+  overflow: hidden;
+}

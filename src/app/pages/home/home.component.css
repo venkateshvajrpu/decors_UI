@@ -1,0 +1,282 @@
+.hero {
+  padding-block: var(--space-8) var(--space-9);
+  overflow: hidden;
+}
+
+.hero__inner {
+  display: grid;
+  gap: var(--space-8);
+  align-items: start;
+}
+
+.hero__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.hero__greeting {
+  font-size: var(--text-2xl);
+  color: var(--color-accent-light);
+  line-height: 1;
+}
+
+.hero__title {
+  font-size: var(--text-5xl);
+  color: var(--color-white);
+}
+
+.hero__tagline {
+  font-size: var(--text-xl);
+  color: var(--color-accent-light);
+  font-weight: var(--weight-medium);
+}
+
+.hero__text {
+  max-width: 34rem;
+  color: var(--color-bg);
+  font-size: var(--text-lg);
+}
+
+.hero__actions {
+  width: 100%;
+  margin-block-start: var(--space-2);
+}
+
+/* Phone: WhatsApp gets the full row; Call + View menu share the next one. */
+.hero__actions .btn {
+  flex: 1 1 100%;
+}
+
+.hero__actions .hero__secondary {
+  flex: 1 1 calc(50% - var(--space-3));
+  padding-inline: var(--space-4);
+}
+
+.hero__proof {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  font-size: var(--text-sm);
+  color: var(--color-bg);
+}
+
+.hero__proof li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.hero__proof app-icon {
+  color: var(--color-accent);
+}
+
+.hero__media img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  border: 6px solid var(--color-surface);
+}
+
+.why {
+  gap: var(--space-3);
+}
+
+/* Phone: icon in the left column, text flows beside it — half the height of a stacked card. */
+.why__item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: var(--space-4);
+  row-gap: var(--space-1);
+  padding: var(--space-5);
+  background: var(--color-bg);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+}
+
+.why__item > * {
+  grid-column: 2;
+}
+
+.why__item .why__icon {
+  grid-column: 1;
+  grid-row: 1 / span 3;
+  align-self: start;
+}
+
+.why__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: var(--radius-full);
+  background: var(--color-secondary-soft);
+  color: var(--color-secondary-dark);
+}
+
+.why__title {
+  font-size: var(--text-xl);
+}
+
+.why__telugu {
+  color: var(--color-accent-deep);
+  font-size: var(--text-sm);
+}
+
+.why__text {
+  color: var(--color-muted);
+  font-size: var(--text-sm);
+}
+
+.categories {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+
+.category {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-height: 9rem;
+  text-decoration: none;
+  transition: transform var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out);
+}
+
+.category:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+  color: var(--color-white);
+}
+
+.category:focus-visible {
+  outline-color: var(--color-accent);
+}
+
+.category app-icon {
+  color: var(--color-accent-light);
+}
+
+.category__title {
+  font-size: var(--text-lg);
+}
+
+.category__telugu {
+  color: var(--color-accent-light);
+  font-size: var(--text-sm);
+}
+
+.category__count {
+  margin-block-start: auto;
+  font-size: var(--text-sm);
+  opacity: 0.85;
+}
+
+/* Phone: testimonials become a swipeable row instead of three stacked cards. */
+.testimonials {
+  display: flex;
+  gap: var(--space-4);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  padding-block-end: var(--space-2);
+  margin-inline: calc(-1 * var(--gutter));
+  padding-inline: var(--gutter);
+}
+
+.testimonials::-webkit-scrollbar {
+  display: none;
+}
+
+.testimonials > * {
+  flex: 0 0 min(85%, 20rem);
+  scroll-snap-align: center;
+}
+
+.section__more {
+  margin-block-start: var(--space-7);
+}
+
+@media (min-width: 48rem) {
+  .hero__actions {
+    width: auto;
+  }
+
+  .hero__actions .btn,
+  .hero__actions .hero__secondary {
+    flex: 0 0 auto;
+    padding-inline: var(--space-8);
+  }
+
+  .why {
+    gap: var(--space-6);
+  }
+
+  .why__item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding: var(--space-6);
+  }
+
+  .why__icon {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .categories {
+    gap: var(--space-6);
+  }
+
+  .category {
+    gap: var(--space-2);
+    min-height: 11rem;
+  }
+
+  .category__title {
+    font-size: var(--text-xl);
+  }
+
+  .testimonials {
+    display: grid;
+    overflow: visible;
+    margin-inline: 0;
+    padding-inline: 0;
+    padding-block-end: 0;
+  }
+
+  .testimonials > * {
+    flex: none;
+  }
+
+  .section__more {
+    margin-block-start: var(--space-8);
+  }
+}
+
+@media (min-width: 64rem) {
+  /* Component styles out-specify the global .grid--4, so restore the four-up layout here. */
+  .categories {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .hero {
+    padding-block: var(--space-11) var(--space-12);
+  }
+
+  .hero__inner {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: var(--space-10);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .category:hover {
+    transform: none;
+  }
+}

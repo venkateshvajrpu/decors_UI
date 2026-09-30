@@ -1,0 +1,14 @@
+<figure class="card">
+  <div class="card__stars" role="img" [attr.aria-label]="'Rated ' + testimonial().rating + ' out of 5'">
+    @for (filled of stars(); track $index) {
+      <app-icon name="star" size="1.1rem" [class.is-filled]="filled" />
+    }
+  </div>
+  <blockquote class="card__quote">
+    <p>{{ testimonial().quote }}</p>
+  </blockquote>
+  <figcaption class="card__author">
+    <span class="card__name">{{ testimonial().name }}</span>
+    <span class="card__meta">{{ testimonial().event }} · {{ testimonial().location }}</span>
+  </figcaption>
+</figure>

@@ -1,0 +1,111 @@
+.album {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-align: start;
+  padding: 0;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out);
+}
+
+/* Animated sample backdrop — a soft teal light sweep (reference for now). */
+.album::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    transparent 34%,
+    color-mix(in srgb, var(--color-secondary) 22%, transparent) 50%,
+    transparent 66%
+  );
+  background-size: 260% 100%;
+  animation: card-sheen 6s var(--ease-in-out) infinite;
+  opacity: 0.6;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .album::before {
+    animation: none;
+  }
+}
+
+.album:hover,
+.album:focus-visible {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-3px);
+}
+
+.album__media {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.album__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.album:hover .album__media img {
+  transform: scale(1.05);
+}
+
+.album__count {
+  position: absolute;
+  inset-block-start: var(--space-3);
+  inset-inline-end: var(--space-3);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+  color: var(--color-white);
+  background: color-mix(in srgb, var(--color-ink) 70%, transparent);
+  border-radius: var(--radius-full);
+}
+
+.album__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-4);
+}
+
+.album__title {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  color: var(--color-primary);
+}
+
+.album__venue {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .album:hover,
+  .album:focus-visible {
+    transform: none;
+  }
+
+  .album:hover .album__media img {
+    transform: none;
+  }
+}

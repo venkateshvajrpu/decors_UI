@@ -1,0 +1,145 @@
+.pkg {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  height: 100%;
+  padding: var(--space-6);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out);
+}
+
+/* Animated sample backdrop — a soft pulsing glow (reference for now).
+   No overflow:hidden here so the "Most popular" badge can sit above the top. */
+.pkg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: inherit;
+  background:
+    radial-gradient(70% 55% at 50% 0%, color-mix(in srgb, var(--color-accent) 26%, transparent), transparent 70%),
+    radial-gradient(70% 55% at 50% 100%, color-mix(in srgb, var(--color-secondary) 22%, transparent), transparent 70%);
+  animation: card-pulse 6s var(--ease-in-out) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pkg::before {
+    animation: none;
+  }
+}
+
+.pkg:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.pkg--popular {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-md);
+}
+
+.pkg__badge {
+  position: absolute;
+  inset-block-start: calc(-1 * var(--space-3));
+  inset-inline-end: var(--space-5);
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-white);
+  background: var(--color-accent-deep);
+  border-radius: var(--radius-full);
+}
+
+.pkg__name {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  color: var(--color-primary);
+}
+
+.pkg__telugu {
+  color: var(--color-accent-deep);
+  font-size: var(--text-sm);
+}
+
+.pkg__tagline {
+  color: var(--color-muted);
+  font-size: var(--text-sm);
+}
+
+.pkg__price {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  color: var(--color-ink);
+}
+
+.pkg__from {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--color-muted);
+}
+
+.pkg__suited {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.pkg__suited li {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  background: var(--color-secondary-soft);
+  color: var(--color-secondary-dark);
+}
+
+.pkg__inclusions,
+.pkg__exclusions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+}
+
+.pkg__inclusions li,
+.pkg__exclusions li {
+  display: flex;
+  align-items: start;
+  gap: var(--space-2);
+  color: var(--color-ink);
+}
+
+.pkg__inclusions app-icon {
+  color: var(--color-accent-deep);
+  flex: 0 0 auto;
+  margin-block-start: 0.15em;
+}
+
+.pkg__exclusions li {
+  color: var(--color-muted);
+}
+
+.pkg__exclusions app-icon {
+  color: var(--color-muted);
+  flex: 0 0 auto;
+  margin-block-start: 0.15em;
+}
+
+.pkg .btn {
+  margin-block-start: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pkg:hover {
+    transform: none;
+  }
+}

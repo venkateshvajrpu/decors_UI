@@ -1,0 +1,14 @@
+# Render Blueprint — https://render.com/docs/blueprint-spec
+# Fully prerendered static site: no rewrite rules needed. Every route has its
+# own index.html and scripts/postbuild.mjs emits a root 404.html, which Render
+# serves automatically for unknown paths.
+services:
+  - type: web
+    name: srinivas-decor
+    runtime: static
+    buildCommand: npm ci && npm run build
+    staticPublishPath: dist/decor-site/browser
+    headers:
+      - path: /*
+        name: X-Frame-Options
+        value: SAMEORIGIN

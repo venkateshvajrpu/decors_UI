@@ -1,0 +1,25 @@
+.nf {
+  min-height: 60dvh;
+  display: flex;
+  align-items: center;
+}
+
+.nf__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  text-align: center;
+}
+
+.nf__code {
+  font-family: var(--font-display);
+  font-size: var(--text-5xl);
+  color: var(--color-accent-light);
+  line-height: 1;
+}
+
+.nf__telugu {
+  font-size: var(--text-xl);
+  color: var(--color-accent-deep);
+}
