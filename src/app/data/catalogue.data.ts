@@ -1,7 +1,7 @@
 import type { CatalogueCategory } from '../models';
 
 // TODO(client): confirm items, Telugu names and pricing units; replace images under public/images/catalogue/.
-// Ordered to lead with the business's core strengths: lighting and sound / DJ.
+// Covers the full offering — decoration, supplies (lighting, sound, generators, furniture) and event extras.
 export const CATALOGUE: CatalogueCategory[] = [
   {
     id: 'lighting',

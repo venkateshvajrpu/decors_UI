@@ -61,12 +61,12 @@ export interface SiteConfig {
 export const SITE_CONFIG = new InjectionToken<SiteConfig>('SITE_CONFIG');
 
 export const siteConfig: SiteConfig = {
-  name: 'Dileep Lighting & Sounds',
-  tagline: 'Lighting, sound & decoration for every celebration',
-  legalName: 'Dileep Lighting & Sounds',
+  name: 'Dileep Decors & Suppliers',
+  tagline: 'Complete decoration & event setup for every celebration',
+  legalName: 'Dileep Decors & Suppliers',
   businessType: 'events',
-  enquiryNoun: 'lighting, sound & decoration',
-  whatsappSubject: 'Lighting, sound & decor enquiry',
+  enquiryNoun: 'decoration & event setup',
+  whatsappSubject: 'Decoration & event enquiry',
   // Proprietor: R. Rajendra Rao · Contact: R. Dileep Kumar
   phone: '+91 79893 45350',
   whatsapp: '917989345350',

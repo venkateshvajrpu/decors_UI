@@ -2,11 +2,11 @@ import type { Feature } from '../models';
 
 // TODO(client): adjust the "why choose us" points to match real strengths.
 export const WHY_US: Feature[] = [
-  { icon: 'speaker', title: 'Own lighting & sound gear', teluguTitle: 'మా స్వంత లైటింగ్ & సౌండ్', text: 'DJ consoles, fly (line-array) sound, stage lighting and LED — all our own, ready for any size event.' },
-  { icon: 'truck', title: 'Everything under one roof', text: 'Lighting, sound, stage, pandals, flowers, balloon décor and generators — supplied and set up by one team.' },
+  { icon: 'truck', title: 'Everything under one roof', teluguTitle: 'అన్నీ ఒకే చోట', text: 'Decoration, stage, pandals, flowers, balloons, lighting, sound and generators — supplied and set up by one team.' },
+  { icon: 'palette', title: 'Décor for every event', text: 'Weddings, receptions, birthdays, seemantham, corporate and temple functions — styled to your theme and budget.' },
+  { icon: 'sofa', title: 'Rentals & supplies', text: 'Chairs, sofas, carpets, furniture, LED, generators and more on rent for any size event.' },
   { icon: 'bulb', title: 'Power backup included', text: 'Silent generators on standby so the lights and music never stop, even on open grounds.' },
   { icon: 'clock', title: 'On-time setup', teluguTitle: 'సమయపాలన', text: 'Muhurtham timings are sacred. We plan backwards so everything is ready before guests arrive.' },
-  { icon: 'palette', title: 'Styled to your theme', text: 'Every function is set up to your colours, theme and budget — no cookie-cutter setups.' },
 ];
 
 // TODO(client): confirm the booking process.
